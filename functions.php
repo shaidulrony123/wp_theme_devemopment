@@ -170,6 +170,38 @@ if(!function_exists('mytheme_setup')){
             * including image
             *including fonts
         */ 
+        if(!function_exists('my_custom_meta_box')){
+            function my_custom_meta_box(){
+                // add_meta_box( 'id', 'title', 'callback', 'post type', 'context', 'priority', 'callback args');
+                add_meta_box(
+                'my_custom_meta_box',
+                 'Add Icon',
+                  'myinputhtml',
+                  'MySlider'
+                   );
+            }
+        }
+
+        if(!function_exists('myinputhtml')){
+            function myinputhtml($post){
+                $icon = get_post_meta($post->ID, 'add_icon_service', true);
+                ?>
+                <label for="add_icon">Add Icon</label><br>
+                <input type="text" name="add_icon" id="add_icon" class="form-control" value="<?php echo $icon; ?>">
+                <?php
+            }
+        }
+        add_action('add_meta_boxes', 'my_custom_meta_box');
+
+        if(!function_exists('mymetasave')){
+            function mymetasave($post_id){
+                update_post_meta(
+                    $post_id,
+                 'add_icon_service', 
+                 $_POST['add_icon']);
+            }
+        }
+        add_action('save_post', 'mymetasave');
         
     }
 }

@@ -20,9 +20,9 @@ if(!function_exists('mycustompost')){
                 
             ),
             'public' => true,
-            'supports' => array('title', 'editor', 'author', 'thumbnail', 'excerpt', 'trackbacks', 'custom-fields', 'comments', 'revisions', 'page-attributes', 'post-formats'), //post type supports
+            // 'supports' => array('title', 'editor', 'author', 'thumbnail', 'excerpt', 'trackbacks', 'custom-fields', 'comments', 'revisions', 'page-attributes', 'post-formats'), //post type supports
             'capability_type' => 'post', //define custom type post 
-            'menu_position' => 5, //set menu position
+            'menu_position' => 10, //set menu position
         )
     );
     }
